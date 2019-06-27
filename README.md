@@ -1,5 +1,12 @@
 # docker-yum
 
+## :construction: Under construction
+
+This repository is work in anticipation of an improved method of installing Senzing.
+Until this comes out of "under construction" mode, please use
+[senzing/senzing-package](https://github.com/Senzing/senzing-package) repository and
+[store/senzing/senzing-package](https://hub.docker.com/_/senzing-package) docker image.
+
 ## Overview
 
 This repository is a wrapper over the `yum` command.
