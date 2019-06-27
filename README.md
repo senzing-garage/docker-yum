@@ -68,16 +68,6 @@ Create a folder for each output directory.
     export SENZING_VAR=${SENZING_VOLUME}/var
     ```
 
-1. Make directories.
-   Example:
-
-    ```console
-    mkdir -p ${SENZING_DATA}
-    mkdir -p ${SENZING_G2}
-    mkdir -p ${SENZING_ETC}
-    mkdir -p ${SENZING_VAR}
-    ```
-
 ### Run docker container
 
 1. Run the docker container.  Example:
