@@ -1,5 +1,12 @@
 # docker-yum
 
+## :construction: Under construction
+
+This repository is work in anticipation of an improved method of installing Senzing.
+Until this comes out of "under construction" mode, please use
+[senzing/senzing-package](https://github.com/Senzing/senzing-package) repository and
+[store/senzing/senzing-package](https://hub.docker.com/_/senzing-package) docker image.
+
 ## Overview
 
 This repository is a wrapper over the `yum` command.
@@ -66,16 +73,6 @@ Create a folder for each output directory.
     export SENZING_G2=${SENZING_VOLUME}/g2
     export SENZING_ETC=${SENZING_VOLUME}/etc
     export SENZING_VAR=${SENZING_VOLUME}/var
-    ```
-
-1. Make directories.
-   Example:
-
-    ```console
-    mkdir -p ${SENZING_DATA}
-    mkdir -p ${SENZING_G2}
-    mkdir -p ${SENZING_ETC}
-    mkdir -p ${SENZING_VAR}
     ```
 
 ### Run docker container
