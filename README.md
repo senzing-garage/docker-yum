@@ -78,11 +78,20 @@ To use the Senzing code, you must agree to the End User License Agreement (EULA)
 The output of `yum install senzingapi` will be in different directories.
 Create a folder for each output directory.
 
-1. :pencil2: Identify directories for RPM output.
+1. :pencil2: To mimic an actual RPM installation, identify directories for RPM output in this manner:
+
+    ```console
+    export SENZING_DATA_DIR=/opt/senzing/data
+    export SENZING_G2_DIR=/opt/senzing/g2
+    export SENZING_ETC_DIR=/etc/opt/senzing
+    export SENZING_VAR_DIR=/var/opt/senzing
+    ```
+
+1. :pencil2: Alternatively, directories for RPM output can be put anywhere.
    Example:
 
     ```console
-    export SENZING_VOLUME=/tmp/senzing-yum-test
+    export SENZING_VOLUME=/opt/senzing-v1.999.0
 
     export SENZING_DATA_DIR=${SENZING_VOLUME}/data
     export SENZING_G2_DIR=${SENZING_VOLUME}/g2
@@ -128,12 +137,14 @@ Create a folder for each output directory.
 
     ```console
     export SENZING_RPM_DIR=~/Downloads
+    export SENZING_RPM_FILENAME=senzingapi-1.10.0-19213.x86_64.rpm
     ```
 
 1. Run the docker container.  Example:
 
     ```console
     sudo docker run \
+      --env SENZING_ACCEPT_EULA=${SENZING_ACCEPT_EULA} \
       --interactive \
       --tty \
       --volume ${SENZING_DATA_DIR}:/opt/senzing/data \
@@ -141,7 +152,7 @@ Create a folder for each output directory.
       --volume ${SENZING_ETC_DIR}:/etc/opt/senzing \
       --volume ${SENZING_VAR_DIR}:/var/opt/senzing \
       --volume ${SENZING_RPM_DIR}:/data \
-      senzing/yum -y localinstall /data/senzingapi-1.10.0-19190.x86_64.rpm
+      senzing/yum -y localinstall /data/${SENZING_RPM_FILENAME}
     ```
 
 ## Develop
