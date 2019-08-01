@@ -63,7 +63,7 @@ This repository assumes a working knowledge of:
 
 To use the Senzing code, you must agree to the End User License Agreement (EULA).
 
-1. :Warning: This step is intentionally tricky and not simply copy/paste.
+1. :warning: This step is intentionally tricky and not simply copy/paste.
    See [Configuration](#configuration) for the correct value.
    Replace the double-quote character in the example with the correct value.
    The use of the double-quote character is intentional to prevent simple copy/paste.
