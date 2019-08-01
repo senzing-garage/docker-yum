@@ -67,7 +67,6 @@ To use the Senzing code, you must agree to the End User License Agreement (EULA)
    See [Configuration](#configuration) for the correct value.
    Replace the double-quote character in the example with the correct value.
    The use of the double-quote character is intentional to prevent simple copy/paste.
-
    Example:
 
     ```console
