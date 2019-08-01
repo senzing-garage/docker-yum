@@ -145,8 +145,6 @@ Create a folder for each output directory.
     ```console
     sudo docker run \
       --env SENZING_ACCEPT_EULA=${SENZING_ACCEPT_EULA} \
-      --interactive \
-      --tty \
       --volume ${SENZING_DATA_DIR}:/opt/senzing/data \
       --volume ${SENZING_G2_DIR}:/opt/senzing/g2 \
       --volume ${SENZING_ETC_DIR}:/etc/opt/senzing \
