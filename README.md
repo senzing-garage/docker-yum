@@ -47,7 +47,7 @@ This repository assumes a working knowledge of:
 
 ### Get docker image
 
-1. Option #1. The `senzing/yum` docker image is on [DockerHub](https://hub.docker.com/) and can be downloaded.
+1. Option #1. The `senzing/yum` docker image is on [DockerHub](https://hub.docker.com/r/senzing/yum) and can be downloaded.
    Example:
 
     ```console
@@ -79,6 +79,7 @@ Configuration values specified by environment variable or command line parameter
 To use the Senzing code, you must agree to the End User License Agreement (EULA).
 
 1. :warning: This step is intentionally tricky and not simply copy/paste.
+   This ensures that you make a conscious effort to accept the EULA.
    See [Configuration](#configuration) or
    [SENZING_ACCEPT_EULA](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_accept_eula)
    for the correct value.
