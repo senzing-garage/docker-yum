@@ -1,12 +1,5 @@
 # docker-yum
 
-## :construction: Under construction
-
-This repository is work in anticipation of an improved method of installing Senzing.
-Until this comes out of "under construction" mode, please use
-[senzing/senzing-package](https://github.com/Senzing/senzing-package) repository and
-[store/senzing/senzing-package](https://hub.docker.com/_/senzing-package) docker image.
-
 ## Overview
 
 This repository is a wrapper over the `yum` command.
@@ -20,6 +13,7 @@ It can be used to download and extract RPMs.
     1. [Background knowledge](#background-knowledge)
 1. [Demonstrate](#demonstrate)
     1. [Configuration](#configuration)
+    1. [EULA](#eula)
     1. [Volumes](#volumes)
     1. [Run docker container](#run-docker-container)
     1. [Run docker container interactively](#run-docker-container-interactively)
@@ -36,7 +30,7 @@ It can be used to download and extract RPMs.
 
 ### Space
 
-This repository and demonstration require 10 MB free disk space.
+This repository and demonstration require 4 GB free disk space.
 
 ### Time
 
@@ -52,12 +46,16 @@ This repository assumes a working knowledge of:
 
 ### Configuration
 
-* **SENZING_ACCEPT_EULA** -
-  This is your acceptance of the End User License Agreement (EULA).
-  The EULA is located at
-  [https://senzing.com/end-user-license-agreement](https://senzing.com/end-user-license-agreement/).
+Configuration values specified by environment variable or command line parameter.
+
+- **[SENZING_ACCEPT_EULA](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_accept_eula)** -
   If you accept the EULA, set the value of `SENZING_ACCEPT_EULA` to `I_ACCEPT_THE_SENZING_EULA`.
-  Example shown below.
+- **[SENZING_DATA_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_data_dir)**
+- **[SENZING_ETC_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_etc_dir)**
+- **[SENZING_G2_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_g2_dir)**
+- **[SENZING_RPM_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_rpm_dir)**
+- **[SENZING_RPM_FILENAME](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_rpm_filename)**
+- **[SENZING_VAR_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_var_dir)**
 
 ### EULA
 
@@ -75,7 +73,7 @@ To use the Senzing code, you must agree to the End User License Agreement (EULA)
 
 ### Volumes
 
-The output of `yum install senzingapi` will be in different directories.
+The output of `yum install senzingapi` will place files in different directories.
 Create a folder for each output directory.
 
 1. :pencil2: To mimic an actual RPM installation, identify directories for RPM output in this manner:
@@ -91,7 +89,7 @@ Create a folder for each output directory.
    Example:
 
     ```console
-    export SENZING_VOLUME=/opt/senzing-v1.999.0
+    export SENZING_VOLUME=/opt/my-senzing
 
     export SENZING_DATA_DIR=${SENZING_VOLUME}/data
     export SENZING_G2_DIR=${SENZING_VOLUME}/g2
@@ -101,8 +99,9 @@ Create a folder for each output directory.
 
 ### Run docker container
 
-1. Run the docker container with programmatic EULA acceptance.
-   Example:
+Option #1. Programmatic EULA acceptance.
+
+1. Run the docker container.  Example:
 
     ```console
     sudo docker run \
@@ -116,8 +115,9 @@ Create a folder for each output directory.
 
 ### Run docker container interactively
 
-1. Run the docker container. User accepts EULA manually.
-   Example:
+Option #2. User manually accepts EULA.
+
+1. Run the docker container.  Example:
 
     ```console
     sudo docker run \
@@ -132,12 +132,14 @@ Create a folder for each output directory.
 
 ### Run docker container on local file
 
+Option #3. `yum` install a local RPM file.
+
 1. :pencil2: Identify directory containing RPM file.
    Example:
 
     ```console
     export SENZING_RPM_DIR=~/Downloads
-    export SENZING_RPM_FILENAME=senzingapi-1.10.0-19213.x86_64.rpm
+    export SENZING_RPM_FILENAME=senzingapi-nn.nn.nn.x86_64.rpm
     ```
 
 1. Run the docker container.  Example:
@@ -164,6 +166,9 @@ The following software programs need to be installed:
 1. [docker](https://github.com/Senzing/knowledge-base/blob/master/HOWTO/install-docker.md)
 
 ### Clone repository
+
+For more information on environment variables,
+see [Environment Variables](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md).
 
 1. Set these environment variable values:
 
