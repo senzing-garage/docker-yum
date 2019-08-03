@@ -71,7 +71,7 @@ To use the Senzing code, you must agree to the End User License Agreement (EULA)
 
 ### Volumes
 
-The output of `yum install senzingapi` will be in different directories.
+The output of `yum install senzingapi` will place files in different directories.
 Create a folder for each output directory.
 
 1. :pencil2: To mimic an actual RPM installation, identify directories for RPM output in this manner:
