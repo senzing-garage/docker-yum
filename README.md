@@ -11,7 +11,8 @@ It can be used to download and extract RPMs.
     1. [Space](#space)
     1. [Time](#time)
     1. [Background knowledge](#background-knowledge)
-1. [Demonstrate](#demonstrate)
+1. [Demonstrate using Docker](#demonstrate-using-docker)
+    1. [Get docker image](#get-docker-image)
     1. [Configuration](#configuration)
     1. [EULA](#eula)
     1. [Volumes](#volumes)
@@ -30,7 +31,7 @@ It can be used to download and extract RPMs.
 
 ### Space
 
-This repository and demonstration require 4 GB free disk space.
+This repository and demonstration require 6 GB free disk space.
 
 ### Time
 
@@ -42,7 +43,23 @@ This repository assumes a working knowledge of:
 
 1. [Docker](https://github.com/Senzing/knowledge-base/blob/master/WHATIS/docker.md)
 
-## Demonstrate
+## Demonstrate using Docker
+
+### Get docker image
+
+1. Option #1. The `senzing/yum` docker image is on [DockerHub](https://hub.docker.com/r/senzing/yum) and can be downloaded.
+   Example:
+
+    ```console
+    sudo docker pull senzing/yum
+    ```
+
+1. Option #2. The `senzing/yum` image can be built locally.
+   Example:
+
+    ```console
+    sudo docker build --tag senzing/yum https://github.com/senzing/docker-yum.git
+    ```
 
 ### Configuration
 
@@ -62,7 +79,10 @@ Configuration values specified by environment variable or command line parameter
 To use the Senzing code, you must agree to the End User License Agreement (EULA).
 
 1. :warning: This step is intentionally tricky and not simply copy/paste.
-   See [Configuration](#configuration) for the correct value.
+   This ensures that you make a conscious effort to accept the EULA.
+   See [Configuration](#configuration) or
+   [SENZING_ACCEPT_EULA](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_accept_eula)
+   for the correct value.
    Replace the double-quote character in the example with the correct value.
    The use of the double-quote character is intentional to prevent simple copy/paste.
    Example:
@@ -76,7 +96,9 @@ To use the Senzing code, you must agree to the End User License Agreement (EULA)
 The output of `yum install senzingapi` will place files in different directories.
 Create a folder for each output directory.
 
-1. :pencil2: To mimic an actual RPM installation, identify directories for RPM output in this manner:
+1. :pencil2: Option #1.
+   To mimic an actual RPM installation,
+   identify directories for RPM output in this manner:
 
     ```console
     export SENZING_DATA_DIR=/opt/senzing/data
@@ -85,7 +107,8 @@ Create a folder for each output directory.
     export SENZING_VAR_DIR=/var/opt/senzing
     ```
 
-1. :pencil2: Alternatively, directories for RPM output can be put anywhere.
+1. :pencil2: Option #2.
+   Alternatively, directories for RPM output can be put anywhere.
    Example:
 
     ```console
@@ -101,7 +124,8 @@ Create a folder for each output directory.
 
 Option #1. Programmatic EULA acceptance.
 
-1. Run the docker container.  Example:
+1. Run the docker container.
+   Example:
 
     ```console
     sudo docker run \
@@ -117,7 +141,8 @@ Option #1. Programmatic EULA acceptance.
 
 Option #2. User manually accepts EULA.
 
-1. Run the docker container.  Example:
+1. Run the docker container.
+   Example:
 
     ```console
     sudo docker run \
@@ -134,7 +159,8 @@ Option #2. User manually accepts EULA.
 
 Option #3. `yum` install a local RPM file.
 
-1. :pencil2: Identify directory containing RPM file.
+1. :pencil2: Set environment variables.
+   Identify directory containing RPM file.
    Example:
 
     ```console
@@ -142,7 +168,8 @@ Option #3. `yum` install a local RPM file.
     export SENZING_RPM_FILENAME=senzingapi-nn.nn.nn.x86_64.rpm
     ```
 
-1. Run the docker container.  Example:
+1. Run the docker container.
+   Example:
 
     ```console
     sudo docker run \
@@ -188,20 +215,20 @@ see [Environment Variables](https://github.com/Senzing/knowledge-base/blob/maste
 
 ### Build docker image for development
 
-1. Option #1 - Using docker command and GitHub.
+1. Option #1 - Using `docker` command and GitHub.
 
     ```console
     sudo docker build --tag senzing/yum https://github.com/senzing/docker-yum.git
     ```
 
-1. Option #2 - Using docker command and local repository.
+1. Option #2 - Using `docker` command and local repository.
 
     ```console
     cd ${GIT_REPOSITORY_DIR}
     sudo docker build --tag senzing/yum .
     ```
 
-1. Option #3 - Using make command.
+1. Option #3 - Using `make` command.
 
     ```console
     cd ${GIT_REPOSITORY_DIR}
