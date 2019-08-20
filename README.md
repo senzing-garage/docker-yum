@@ -130,6 +130,7 @@ Option #1. Programmatic EULA acceptance.
     ```console
     sudo docker run \
       --env SENZING_ACCEPT_EULA=${SENZING_ACCEPT_EULA} \
+      --rm \
       --volume ${SENZING_DATA_DIR}:/opt/senzing/data \
       --volume ${SENZING_G2_DIR}:/opt/senzing/g2 \
       --volume ${SENZING_ETC_DIR}:/etc/opt/senzing \
@@ -147,6 +148,7 @@ Option #2. User manually accepts EULA.
     ```console
     sudo docker run \
       --interactive \
+      --rm \
       --tty \
       --volume ${SENZING_DATA_DIR}:/opt/senzing/data \
       --volume ${SENZING_G2_DIR}:/opt/senzing/g2 \
@@ -174,6 +176,7 @@ Option #3. `yum` install a local RPM file.
     ```console
     sudo docker run \
       --env SENZING_ACCEPT_EULA=${SENZING_ACCEPT_EULA} \
+      --rm \
       --volume ${SENZING_DATA_DIR}:/opt/senzing/data \
       --volume ${SENZING_G2_DIR}:/opt/senzing/g2 \
       --volume ${SENZING_ETC_DIR}:/etc/opt/senzing \
