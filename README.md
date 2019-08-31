@@ -66,7 +66,6 @@ This repository assumes a working knowledge of:
 Configuration values specified by environment variable or command line parameter.
 
 - **[SENZING_ACCEPT_EULA](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_accept_eula)** -
-  If you accept the EULA, set the value of `SENZING_ACCEPT_EULA` to `I_ACCEPT_THE_SENZING_EULA`.
 - **[SENZING_DATA_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_data_dir)**
 - **[SENZING_ETC_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_etc_dir)**
 - **[SENZING_G2_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_g2_dir)**
