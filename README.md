@@ -12,7 +12,6 @@ It can be used to download and extract RPMs.
     1. [Time](#time)
     1. [Background knowledge](#background-knowledge)
 1. [Demonstrate using Docker](#demonstrate-using-docker)
-    1. [Get docker image](#get-docker-image)
     1. [Configuration](#configuration)
     1. [EULA](#eula)
     1. [Volumes](#volumes)
@@ -44,22 +43,6 @@ This repository assumes a working knowledge of:
 1. [Docker](https://github.com/Senzing/knowledge-base/blob/master/WHATIS/docker.md)
 
 ## Demonstrate using Docker
-
-### Get docker image
-
-1. Option #1. The `senzing/yum` docker image is on [DockerHub](https://hub.docker.com/r/senzing/yum) and can be downloaded.
-   Example:
-
-    ```console
-    sudo docker pull senzing/yum
-    ```
-
-1. Option #2. The `senzing/yum` image can be built locally.
-   Example:
-
-    ```console
-    sudo docker build --tag senzing/yum https://github.com/senzing/docker-yum.git
-    ```
 
 ### Configuration
 
@@ -164,7 +147,8 @@ Option #3. `yum` install a local RPM file.
    [github.com/Senzing/docker-yumdownloader](https://github.com/Senzing/docker-yumdownloader).
 
 1. :pencil2: Set environment variables.
-   Identify directory containing RPM file.
+   Identify directory containing RPM file
+   and the exact name of the RPM file.
    Example:
 
     ```console
