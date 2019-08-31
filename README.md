@@ -65,7 +65,7 @@ This repository assumes a working knowledge of:
 
 Configuration values specified by environment variable or command line parameter.
 
-- **[SENZING_ACCEPT_EULA](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_accept_eula)** -
+- **[SENZING_ACCEPT_EULA](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_accept_eula)**
 - **[SENZING_DATA_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_data_dir)**
 - **[SENZING_ETC_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_etc_dir)**
 - **[SENZING_G2_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_g2_dir)**
@@ -160,6 +160,9 @@ Option #2. User manually accepts EULA.
 
 Option #3. `yum` install a local RPM file.
 
+1. To download Senzing RPM file, see
+   [github.com/Senzing/docker-yumdownloader](https://github.com/Senzing/docker-yumdownloader).
+
 1. :pencil2: Set environment variables.
    Identify directory containing RPM file.
    Example:
@@ -204,16 +207,11 @@ see [Environment Variables](https://github.com/Senzing/knowledge-base/blob/maste
     ```console
     export GIT_ACCOUNT=senzing
     export GIT_REPOSITORY=docker-yum
-    ```
-
-1. Follow steps in [clone-repository](https://github.com/Senzing/knowledge-base/blob/master/HOWTO/clone-repository.md) to install the Git repository.
-
-1. After the repository has been cloned, be sure the following are set:
-
-    ```console
     export GIT_ACCOUNT_DIR=~/${GIT_ACCOUNT}.git
     export GIT_REPOSITORY_DIR="${GIT_ACCOUNT_DIR}/${GIT_REPOSITORY}"
     ```
+
+1. Follow steps in [clone-repository](https://github.com/Senzing/knowledge-base/blob/master/HOWTO/clone-repository.md) to install the Git repository.
 
 ### Build docker image for development
 
