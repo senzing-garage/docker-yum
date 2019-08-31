@@ -12,7 +12,6 @@ It can be used to download and extract RPMs.
     1. [Time](#time)
     1. [Background knowledge](#background-knowledge)
 1. [Demonstrate using Docker](#demonstrate-using-docker)
-    1. [Get docker image](#get-docker-image)
     1. [Configuration](#configuration)
     1. [EULA](#eula)
     1. [Volumes](#volumes)
@@ -45,27 +44,11 @@ This repository assumes a working knowledge of:
 
 ## Demonstrate using Docker
 
-### Get docker image
-
-1. Option #1. The `senzing/yum` docker image is on [DockerHub](https://hub.docker.com/r/senzing/yum) and can be downloaded.
-   Example:
-
-    ```console
-    sudo docker pull senzing/yum
-    ```
-
-1. Option #2. The `senzing/yum` image can be built locally.
-   Example:
-
-    ```console
-    sudo docker build --tag senzing/yum https://github.com/senzing/docker-yum.git
-    ```
-
 ### Configuration
 
 Configuration values specified by environment variable or command line parameter.
 
-- **[SENZING_ACCEPT_EULA](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_accept_eula)** -
+- **[SENZING_ACCEPT_EULA](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_accept_eula)**
 - **[SENZING_DATA_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_data_dir)**
 - **[SENZING_ETC_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_etc_dir)**
 - **[SENZING_G2_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_g2_dir)**
@@ -160,8 +143,12 @@ Option #2. User manually accepts EULA.
 
 Option #3. `yum` install a local RPM file.
 
+1. To download Senzing RPM file, see
+   [github.com/Senzing/docker-yumdownloader](https://github.com/Senzing/docker-yumdownloader).
+
 1. :pencil2: Set environment variables.
-   Identify directory containing RPM file.
+   Identify directory containing RPM file
+   and the exact name of the RPM file.
    Example:
 
     ```console
@@ -204,16 +191,11 @@ see [Environment Variables](https://github.com/Senzing/knowledge-base/blob/maste
     ```console
     export GIT_ACCOUNT=senzing
     export GIT_REPOSITORY=docker-yum
-    ```
-
-1. Follow steps in [clone-repository](https://github.com/Senzing/knowledge-base/blob/master/HOWTO/clone-repository.md) to install the Git repository.
-
-1. After the repository has been cloned, be sure the following are set:
-
-    ```console
     export GIT_ACCOUNT_DIR=~/${GIT_ACCOUNT}.git
     export GIT_REPOSITORY_DIR="${GIT_ACCOUNT_DIR}/${GIT_REPOSITORY}"
     ```
+
+1. Follow steps in [clone-repository](https://github.com/Senzing/knowledge-base/blob/master/HOWTO/clone-repository.md) to install the Git repository.
 
 ### Build docker image for development
 
