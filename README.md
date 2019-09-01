@@ -16,7 +16,6 @@ It can be used to download and extract RPMs.
     1. [EULA](#eula)
     1. [Volumes](#volumes)
     1. [Run docker container](#run-docker-container)
-    1. [Run docker container interactively](#run-docker-container-interactively)
     1. [Run docker container on local file](#run-docker-container-on-local-file)
 1. [Develop](#develop)
     1. [Prerequisite software](#prerequisite-software)
@@ -74,6 +73,13 @@ To use the Senzing code, you must agree to the End User License Agreement (EULA)
     export SENZING_ACCEPT_EULA="
     ```
 
+1. Set environment variables.
+   Example:
+
+    ```console
+    export SENZING_ACCEPT_EULA_PARAMETER="--env SENZING_ACCEPT_EULA=${SENZING_ACCEPT_EULA}"
+    ```
+
 ### Volumes
 
 The output of `yum install senzingapi` will place files in different directories.
@@ -105,31 +111,14 @@ Create a folder for each output directory.
 
 ### Run docker container
 
-Option #1. Programmatic EULA acceptance.
+Option #1. `yum` install from yum repository.
 
 1. Run the docker container.
    Example:
 
     ```console
     sudo docker run \
-      --env SENZING_ACCEPT_EULA=${SENZING_ACCEPT_EULA} \
-      --rm \
-      --volume ${SENZING_DATA_DIR}:/opt/senzing/data \
-      --volume ${SENZING_G2_DIR}:/opt/senzing/g2 \
-      --volume ${SENZING_ETC_DIR}:/etc/opt/senzing \
-      --volume ${SENZING_VAR_DIR}:/var/opt/senzing \
-      senzing/yum
-    ```
-
-### Run docker container interactively
-
-Option #2. User manually accepts EULA.
-
-1. Run the docker container.
-   Example:
-
-    ```console
-    sudo docker run \
+      ${SENZING_ACCEPT_EULA_PARAMETER} \
       --interactive \
       --rm \
       --tty \
@@ -142,7 +131,7 @@ Option #2. User manually accepts EULA.
 
 ### Run docker container on local file
 
-Option #3. `yum` install a local RPM file.
+Option #2. `yum` install local RPM files.
 
 1. To download Senzing RPM file, see
    [github.com/Senzing/docker-yumdownloader](https://github.com/Senzing/docker-yumdownloader).
@@ -163,8 +152,10 @@ Option #3. `yum` install a local RPM file.
 
     ```console
     sudo docker run \
-      --env SENZING_ACCEPT_EULA=${SENZING_ACCEPT_EULA} \
+      ${SENZING_ACCEPT_EULA_PARAMETER} \
+      --interactive \
       --rm \
+      --tty \
       --volume ${SENZING_DATA_DIR}:/opt/senzing/data \
       --volume ${SENZING_G2_DIR}:/opt/senzing/g2 \
       --volume ${SENZING_ETC_DIR}:/etc/opt/senzing \
