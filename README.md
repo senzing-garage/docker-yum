@@ -49,11 +49,12 @@ This repository assumes a working knowledge of:
 Configuration values specified by environment variable or command line parameter.
 
 - **[SENZING_ACCEPT_EULA](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_accept_eula)**
+- **[SENZING_API_RPM_FILENAME](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_api_rpm_filename)**
 - **[SENZING_DATA_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_data_dir)**
+- **[SENZING_DATA_RPM_FILENAME](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_data_rpm_filename)**
 - **[SENZING_ETC_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_etc_dir)**
 - **[SENZING_G2_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_g2_dir)**
 - **[SENZING_RPM_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_rpm_dir)**
-- **[SENZING_RPM_FILENAME](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_rpm_filename)**
 - **[SENZING_VAR_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_var_dir)**
 
 ### EULA
@@ -153,7 +154,8 @@ Option #3. `yum` install a local RPM file.
 
     ```console
     export SENZING_RPM_DIR=~/Downloads
-    export SENZING_RPM_FILENAME=senzingapi-nn.nn.nn.x86_64.rpm
+    export SENZING_API_RPM_FILENAME=senzingapi-nn.nn.nn.x86_64.rpm
+    export SENZING_DATA_RPM_FILENAME=senzingdata-nn.nn.nn.x86_64.rpm
     ```
 
 1. Run the docker container.
@@ -168,7 +170,9 @@ Option #3. `yum` install a local RPM file.
       --volume ${SENZING_ETC_DIR}:/etc/opt/senzing \
       --volume ${SENZING_VAR_DIR}:/var/opt/senzing \
       --volume ${SENZING_RPM_DIR}:/data \
-      senzing/yum -y localinstall /data/${SENZING_RPM_FILENAME}
+      senzing/yum -y localinstall \
+        /data/${SENZING_DATA_RPM_FILENAME} \
+        /data/${SENZING_API_RPM_FILENAME}
     ```
 
 ## Develop

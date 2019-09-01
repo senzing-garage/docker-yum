@@ -21,4 +21,4 @@ COPY ./rootfs /
 # Runtime execution.
 
 ENTRYPOINT ["yum"]
-CMD ["-y", "install", "senzingapi", "--nogpgcheck"]
+CMD ["-y", "install", "senzingdata", "senzingapi"]
