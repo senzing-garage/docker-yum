@@ -73,7 +73,7 @@ To use the Senzing code, you must agree to the End User License Agreement (EULA)
     export SENZING_ACCEPT_EULA="
     ```
 
-1. Set environment variables.
+1. Construct parameter for `docker run`.
    Example:
 
     ```console
@@ -137,8 +137,8 @@ Option #2. `yum` install local RPM files.
    [github.com/Senzing/docker-yumdownloader](https://github.com/Senzing/docker-yumdownloader).
 
 1. :pencil2: Set environment variables.
-   Identify directory containing RPM file
-   and the exact name of the RPM file.
+   Identify directory containing RPM files
+   and the exact name of the RPM files.
    Example:
 
     ```console
@@ -213,6 +213,8 @@ see [Environment Variables](https://github.com/Senzing/knowledge-base/blob/maste
     cd ${GIT_REPOSITORY_DIR}
     sudo make docker-build
     ```
+
+    Note: `sudo make docker-build-development-cache` can be used to create cached docker layers.
 
 ## Examples
 
