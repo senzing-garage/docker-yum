@@ -1,11 +1,11 @@
 ARG BASE_IMAGE=centos:7
 FROM ${BASE_IMAGE}
 
-ENV REFRESHED_AT=2019-08-05
+ENV REFRESHED_AT=2019-09-01
 
 LABEL Name="senzing/yum" \
       Maintainer="support@senzing.com" \
-      Version="1.3.0"
+      Version="1.1.0"
 
 HEALTHCHECK CMD ["/app/healthcheck.sh"]
 
@@ -21,4 +21,4 @@ COPY ./rootfs /
 # Runtime execution.
 
 ENTRYPOINT ["yum"]
-CMD ["-y", "install", "senzingapi", "--nogpgcheck"]
+CMD ["-y", "install", "senzingdata", "senzingapi"]

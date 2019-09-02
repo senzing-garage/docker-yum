@@ -5,6 +5,14 @@
 This repository is a wrapper over the `yum` command.
 It can be used to download and extract RPMs.
 
+A running docker container installs the latest
+`senzingapi` and `senzingdata`
+packages by running the following command:
+
+```console
+yum -y install senzingdata senzingapi
+```
+
 ### Contents
 
 1. [Expectations](#expectations)
@@ -16,7 +24,6 @@ It can be used to download and extract RPMs.
     1. [EULA](#eula)
     1. [Volumes](#volumes)
     1. [Run docker container](#run-docker-container)
-    1. [Run docker container interactively](#run-docker-container-interactively)
     1. [Run docker container on local file](#run-docker-container-on-local-file)
 1. [Develop](#develop)
     1. [Prerequisite software](#prerequisite-software)
@@ -49,11 +56,12 @@ This repository assumes a working knowledge of:
 Configuration values specified by environment variable or command line parameter.
 
 - **[SENZING_ACCEPT_EULA](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_accept_eula)**
+- **[SENZING_API_RPM_FILENAME](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_api_rpm_filename)**
 - **[SENZING_DATA_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_data_dir)**
+- **[SENZING_DATA_RPM_FILENAME](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_data_rpm_filename)**
 - **[SENZING_ETC_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_etc_dir)**
 - **[SENZING_G2_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_g2_dir)**
 - **[SENZING_RPM_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_rpm_dir)**
-- **[SENZING_RPM_FILENAME](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_rpm_filename)**
 - **[SENZING_VAR_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_var_dir)**
 
 ### EULA
@@ -71,6 +79,13 @@ To use the Senzing code, you must agree to the End User License Agreement (EULA)
 
     ```console
     export SENZING_ACCEPT_EULA="
+    ```
+
+1. Construct parameter for `docker run`.
+   Example:
+
+    ```console
+    export SENZING_ACCEPT_EULA_PARAMETER="--env SENZING_ACCEPT_EULA=${SENZING_ACCEPT_EULA}"
     ```
 
 ### Volumes
@@ -104,31 +119,14 @@ Create a folder for each output directory.
 
 ### Run docker container
 
-Option #1. Programmatic EULA acceptance.
+Option #1. `yum` install from yum repository.
 
 1. Run the docker container.
    Example:
 
     ```console
     sudo docker run \
-      --env SENZING_ACCEPT_EULA=${SENZING_ACCEPT_EULA} \
-      --rm \
-      --volume ${SENZING_DATA_DIR}:/opt/senzing/data \
-      --volume ${SENZING_G2_DIR}:/opt/senzing/g2 \
-      --volume ${SENZING_ETC_DIR}:/etc/opt/senzing \
-      --volume ${SENZING_VAR_DIR}:/var/opt/senzing \
-      senzing/yum
-    ```
-
-### Run docker container interactively
-
-Option #2. User manually accepts EULA.
-
-1. Run the docker container.
-   Example:
-
-    ```console
-    sudo docker run \
+      ${SENZING_ACCEPT_EULA_PARAMETER} \
       --interactive \
       --rm \
       --tty \
@@ -141,19 +139,20 @@ Option #2. User manually accepts EULA.
 
 ### Run docker container on local file
 
-Option #3. `yum` install a local RPM file.
+Option #2. `yum` install local RPM files.
 
 1. To download Senzing RPM file, see
    [github.com/Senzing/docker-yumdownloader](https://github.com/Senzing/docker-yumdownloader).
 
 1. :pencil2: Set environment variables.
-   Identify directory containing RPM file
-   and the exact name of the RPM file.
+   Identify directory containing RPM files
+   and the exact name of the RPM files.
    Example:
 
     ```console
     export SENZING_RPM_DIR=~/Downloads
-    export SENZING_RPM_FILENAME=senzingapi-nn.nn.nn.x86_64.rpm
+    export SENZING_API_RPM_FILENAME=senzingapi-nn.nn.nn.x86_64.rpm
+    export SENZING_DATA_RPM_FILENAME=senzingdata-nn.nn.nn.x86_64.rpm
     ```
 
 1. Run the docker container.
@@ -161,14 +160,18 @@ Option #3. `yum` install a local RPM file.
 
     ```console
     sudo docker run \
-      --env SENZING_ACCEPT_EULA=${SENZING_ACCEPT_EULA} \
+      ${SENZING_ACCEPT_EULA_PARAMETER} \
+      --interactive \
       --rm \
+      --tty \
       --volume ${SENZING_DATA_DIR}:/opt/senzing/data \
       --volume ${SENZING_G2_DIR}:/opt/senzing/g2 \
       --volume ${SENZING_ETC_DIR}:/etc/opt/senzing \
       --volume ${SENZING_VAR_DIR}:/var/opt/senzing \
       --volume ${SENZING_RPM_DIR}:/data \
-      senzing/yum -y localinstall /data/${SENZING_RPM_FILENAME}
+      senzing/yum -y localinstall \
+        /data/${SENZING_DATA_RPM_FILENAME} \
+        /data/${SENZING_API_RPM_FILENAME}
     ```
 
 ## Develop
@@ -218,6 +221,8 @@ see [Environment Variables](https://github.com/Senzing/knowledge-base/blob/maste
     cd ${GIT_REPOSITORY_DIR}
     sudo make docker-build
     ```
+
+    Note: `sudo make docker-build-development-cache` can be used to create cached docker layers.
 
 ## Examples
 
