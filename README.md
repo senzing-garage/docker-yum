@@ -5,6 +5,14 @@
 This repository is a wrapper over the `yum` command.
 It can be used to download and extract RPMs.
 
+A running docker container installs the latest
+`senzingapi` and `senzingdata`
+packages by running the following command:
+
+```console
+yum -y install senzingdata senzingapi
+```
+
 ### Contents
 
 1. [Expectations](#expectations)
