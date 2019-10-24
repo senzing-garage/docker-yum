@@ -21,4 +21,4 @@ COPY ./rootfs /
 # Runtime execution.
 
 ENTRYPOINT ["yum"]
-CMD ["-y", "install", "senzingdata", "senzingapi"]
+CMD ["-y", "install", "senzingdata-v1", "senzingapi"]
