@@ -10,7 +10,7 @@ A running docker container installs the latest
 packages by running the following command:
 
 ```console
-yum -y install senzingdata senzingapi
+yum -y install senzingdata-v1 senzingapi
 ```
 
 ### Related artifacts
@@ -157,7 +157,7 @@ Option #2. `yum` install local RPM files.
     ```console
     export SENZING_RPM_DIR=~/Downloads
     export SENZING_API_RPM_FILENAME=senzingapi-nn.nn.nn.x86_64.rpm
-    export SENZING_DATA_RPM_FILENAME=senzingdata-nn.nn.nn.x86_64.rpm
+    export SENZING_DATA_RPM_FILENAME=senzingdata-v1-nn.nn.nn.x86_64.rpm
     ```
 
 1. Run the docker container.
