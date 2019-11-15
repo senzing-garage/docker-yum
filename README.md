@@ -98,7 +98,7 @@ To use the Senzing code, you must agree to the End User License Agreement (EULA)
 The output of `yum install senzingapi` will place files in different directories.
 Create a folder for each output directory.
 
-1. :pencil2: Option #1.
+1. :pencil2: **Option #1:**
    To mimic an actual RPM installation,
    identify directories for RPM output in this manner:
 
@@ -109,7 +109,7 @@ Create a folder for each output directory.
     export SENZING_VAR_DIR=/var/opt/senzing
     ```
 
-1. :pencil2: Option #2.
+1. :pencil2: **Option #2:**
    Alternatively, directories for RPM output can be put anywhere.
    Example:
 
@@ -131,7 +131,6 @@ Option #1. `yum` install from yum repository.
 
     ```console
     sudo docker run \
-      ${SENZING_ACCEPT_EULA_PARAMETER} \
       --interactive \
       --rm \
       --tty \
@@ -139,6 +138,7 @@ Option #1. `yum` install from yum repository.
       --volume ${SENZING_G2_DIR}:/opt/senzing/g2 \
       --volume ${SENZING_ETC_DIR}:/etc/opt/senzing \
       --volume ${SENZING_VAR_DIR}:/var/opt/senzing \
+      ${SENZING_ACCEPT_EULA_PARAMETER} \
       senzing/yum
     ```
 
@@ -165,7 +165,6 @@ Option #2. `yum` install local RPM files.
 
     ```console
     sudo docker run \
-      ${SENZING_ACCEPT_EULA_PARAMETER} \
       --interactive \
       --rm \
       --tty \
@@ -174,6 +173,7 @@ Option #2. `yum` install local RPM files.
       --volume ${SENZING_ETC_DIR}:/etc/opt/senzing \
       --volume ${SENZING_VAR_DIR}:/var/opt/senzing \
       --volume ${SENZING_RPM_DIR}:/data \
+      ${SENZING_ACCEPT_EULA_PARAMETER} \
       senzing/yum -y localinstall \
         /data/${SENZING_DATA_RPM_FILENAME} \
         /data/${SENZING_API_RPM_FILENAME}
@@ -207,20 +207,20 @@ see [Environment Variables](https://github.com/Senzing/knowledge-base/blob/maste
 
 ### Build docker image for development
 
-1. Option #1 - Using `docker` command and GitHub.
+1. **Option #1:** Using `docker` command and GitHub.
 
     ```console
     sudo docker build --tag senzing/yum https://github.com/senzing/docker-yum.git
     ```
 
-1. Option #2 - Using `docker` command and local repository.
+1. **Option #2:** Using `docker` command and local repository.
 
     ```console
     cd ${GIT_REPOSITORY_DIR}
     sudo docker build --tag senzing/yum .
     ```
 
-1. Option #3 - Using `make` command.
+1. **Option #3:** Using `make` command.
 
     ```console
     cd ${GIT_REPOSITORY_DIR}
