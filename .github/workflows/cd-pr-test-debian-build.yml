@@ -1,0 +1,33 @@
+name: Pull Request Test Senzing Yum Build on Debian
+
+on:
+  pull_request:
+    branches:
+      - issue-22.mahchiahui.1
+
+jobs:
+  prBuildSenzingYum:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Download And Install Senzing Deb Package Onto Runner
+        id: download_install_senzing_deb
+        env:
+          SENZING_REPO_URL: https://senzing-staging-apt.s3.amazonaws.com/senzingstagingrepo_1.0.0-1_amd64.deb
+        run: |
+          wget ${SENZING_REPO_URL} >> output.log 2>&1
+          sudo apt-get -y install ./${SENZING_REPO_URL##*/} >> output.log 2>&1
+          rm -rf senzingrepo_1.0.0-1_amd64.deb >> output.log 2>&1
+          sudo apt-get update -y >> output.log 2>&1
+      - name: Docker build Senzing Yum
+        id: build_senzing_yum
+        run: |
+          docker build . >> build_failure.log 2>&1
+          cat build_failure.log >> output.log 2>&1
+      - name: Persisting log
+        id: persisting_log
+        if: failure()
+        uses: actions/upload-artifact@v1
+        with:
+          name: workflow_log
+          path: output.log
