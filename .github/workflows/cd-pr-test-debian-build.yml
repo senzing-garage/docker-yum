@@ -3,7 +3,7 @@ name: Pull Request Test Senzing Yum Build on Debian
 on:
   pull_request:
     branches:
-      - issue-22.mahchiahui.1
+      - master
 
 jobs:
   prBuildSenzingYum:
