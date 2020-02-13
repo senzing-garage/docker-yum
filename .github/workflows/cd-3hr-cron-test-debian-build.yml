@@ -1,8 +1,9 @@
-name: Cron Schedule 3 hr Test senzing yum Build on Debian
+name: Cron Schedule 3 hr Test Senzing Yum Build on Debian
 
 on:
-  schedule:
-    - cron: '0 */3 * * *'
+  pull_request:
+    branches:
+      - issue-22.mahchiahui.1
 
 jobs:
   buildSenzingYum:
@@ -23,9 +24,9 @@ jobs:
       - name: Docker build Senzing Yum
         id: build_senzing_yum
         run: |
-          docker build . >> build_failure.log 2>&1
+          docker build /this_should_not_work/ >> build_failure.log 2>&1
           cat build_failure.log >> output.log 2>&1
-      - name: Create Git Issue on Build Failure
+      - name: Create Jira Issue on Build Failure
         uses: Senzing/git-action-jira-issue-creation@1.0.0
         id: create_jira_issue
         if: failure()
@@ -33,7 +34,7 @@ jobs:
           JIRA_API_TOKEN: ${{ secrets.JIRA_SECRET }}
           JIRA_USERNAME: ${{ secrets.JIRA_USERNAME }}
           JIRA_ACCOUNT_URL: ${{ secrets.JIRA_ACCOUNT_URL }}
-          JIRA_PROJECT: 'docker-senzing-yum'
+          JIRA_PROJECT: 'PBF'
           JIRA_ISSUE_TYPE: 'Task'
           JIRA_ISSUE_SUMMARY: 'Failed to build Debian version on GitHub Commit SHA ${{ github.sha }}'
           JIRA_ISSUE_DESCRIPTION: |
