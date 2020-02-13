@@ -1,4 +1,4 @@
-name: Pull Request Test Senzing Yum Build on Debian
+name: Pull Request Test Docker Yum Build on Debian
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  prBuildSenzingYum:
+  prBuildDockerYum:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -19,10 +19,10 @@ jobs:
           sudo apt-get -y install ./${SENZING_REPO_URL##*/} >> output.log 2>&1
           rm -rf senzingrepo_1.0.0-1_amd64.deb >> output.log 2>&1
           sudo apt-get update -y >> output.log 2>&1
-      - name: Docker build Senzing Yum
-        id: build_senzing_yum
+      - name: Docker build Docker Yum
+        id: build_senzing_docker_yum
         run: |
-          docker build /this_should_not_work/ >> build_failure.log 2>&1
+          docker build . >> build_failure.log 2>&1
           cat build_failure.log >> output.log 2>&1
       - name: Slack Notification
         id: slack_notification
