@@ -10,20 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Download And Install Senzing Deb Package Onto Runner
-        id: download_install_senzing_deb
-        env:
-          SENZING_REPO_URL: https://senzing-staging-apt.s3.amazonaws.com/senzingstagingrepo_1.0.0-1_amd64.deb
-        run: |
-          wget ${SENZING_REPO_URL} >> output.log 2>&1
-          sudo apt-get -y install ./${SENZING_REPO_URL##*/} >> output.log 2>&1
-          rm -rf senzingrepo_1.0.0-1_amd64.deb >> output.log 2>&1
-          sudo apt-get update -y >> output.log 2>&1
+      - name: Print Environment Variables
+        run: printenv
+      - name: Git Merge With Master
+        id: git_conditional_merge
+        run: git merge origin/master
       - name: Docker build Docker Yum
         id: build_senzing_docker_yum
         run: |
-          docker build . >> build_failure.log 2>&1
-          cat build_failure.log >> output.log 2>&1
+          make \
+            BASE_IMAGE="centos:7" \
+            docker-build >> build_failure.log 2>&1
+            cat build_failure.log >> output.log 2>&1
       - name: Slack Notification
         id: slack_notification
         uses: Senzing/git-action-slack-notification@1.0.0
