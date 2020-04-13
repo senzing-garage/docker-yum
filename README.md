@@ -118,6 +118,8 @@ Environment variables will be used in `--volume` options to externalize the inst
       senzing/yum
     ```
 
+2. When complete, Senzing is installed in the `SENZING_G2_DIR` and `SENZING_DATA_DIR` directories.
+
 ## Develop
 
 ### Prerequisite software
