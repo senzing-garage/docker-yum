@@ -4,8 +4,7 @@
 
 This repository is a wrapper over the `yum` command.
 It can be used to download and extract RPMs.
-
-The running docker container installs the latest `senzingapi` packages.
+The default behavior is to install the latest `senzingapi` packages.
 
 ### Related artifacts
 
@@ -79,7 +78,7 @@ To use the Senzing code, you must agree to the End User License Agreement (EULA)
 ### Volumes
 
 Senzing follows the [Linux File Hierarchy Standard](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf).
-The Senzing installation installs 2 packages: `senzingapi`, `senzingdata`.
+The Senzing RPM installs 2 packages: `senzingapi`, `senzingdata`.
 `senzingapi` is installed into `/opt/senzing/g2` and `senzingdata` is installed into `/opt/senzing/data` inside the docker container.
 Environment variables will be used in `--volume` options to externalize the installations.
 
