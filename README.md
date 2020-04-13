@@ -67,7 +67,7 @@ To use the Senzing code, you must agree to the End User License Agreement (EULA)
    Example:
 
     <pre>
-    export SENZING_ACCEPT_EULA="&lt;the value from [this link](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_accept_eula)&gt;"
+    export SENZING_ACCEPT_EULA="&lt;the value from '<a href="https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_accept_eula">this link</a>'&gt;"
     </pre>
 
 1. Construct parameter for `docker run`.
