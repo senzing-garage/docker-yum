@@ -192,9 +192,8 @@ Configuration values specified by environment variable or command line parameter
 1. To download Senzing RPM file, see
    [github.com/Senzing/docker-yumdownloader](https://github.com/Senzing/docker-yumdownloader).
 
-1. :pencil2: Set environment variables.
-   Identify directory containing RPM files
-   and the exact name of the RPM files.
+1. :pencil2: Set additional environment variables.
+   Identify directory containing RPM files and the exact names of RPM files.
    Example:
 
     ```console
