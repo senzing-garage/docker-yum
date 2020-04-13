@@ -96,7 +96,7 @@ Environment variables will be used in `--volume` options to externalize the inst
        **Windows** - [File sharing](https://github.com/Senzing/knowledge-base/blob/master/HOWTO/share-directories-with-docker.md#windows)
        must be enabled for `SENZING_VOLUME`.
 
-1. Identify the `data` and `g2` directories.
+1. Identify directories for `data` and `g2`.
    Example:
 
     ```console
