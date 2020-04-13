@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository is a wrapper over the `yum` command.
+This repository creates a Docker wrapper over the `yum` command.
 It can be used to download and extract RPMs.
 The default behavior is to install the latest `senzingapi` packages.
 
