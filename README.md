@@ -122,6 +122,8 @@ Environment variables will be used in `--volume` options to externalize the inst
 
 ## Develop
 
+The following instructions are used when modifying and building the Docker image.
+
 ### Prerequisite software
 
 The following software programs need to be installed:
@@ -191,7 +193,7 @@ Configuration values specified by environment variable or command line parameter
 
 `senzing/yum` can be used to install local RPM files.
 
-1. To download Senzing RPM file, see
+1. To download Senzing RPM files, see
    [github.com/Senzing/docker-yumdownloader](https://github.com/Senzing/docker-yumdownloader).
 
 1. :pencil2: Set additional environment variables.
