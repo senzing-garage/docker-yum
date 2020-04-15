@@ -14,21 +14,18 @@ The default behavior is to install the latest `senzingapi` packages.
 ### Contents
 
 1. [Expectations](#expectations)
-    1. [Space](#space)
-    1. [Time](#time)
-    1. [Background knowledge](#background-knowledge)
 1. [Demonstrate using Docker](#demonstrate-using-docker)
     1. [EULA](#eula)
-    1. [Volumes](#volumes)
-    1. [Run docker container](#run-docker-container)
+    1. [Docker volumes](#docker-volumes)
+    1. [Run Docker container](#run-docker-container)
 1. [Develop](#develop)
-    1. [Prerequisite software](#prerequisite-software)
+    1. [Prerequisite software for development](#prerequisite-software-for-development)
     1. [Clone repository](#clone-repository)
-    1. [Build docker image for development](#build-docker-image-for-development)
+    1. [Build Docker image](#build-docker-image)
 1. [Examples](#examples)
 1. [Advanced](#advanced)
     1. [Configuration](#configuration)
-    1. [Run docker container on local file](#run-docker-container-on-local-file)
+    1. [Run Docker container on local file](#run-docker-container-on-local-file)
 1. [Errors](#errors)
 1. [References](#references)
 
@@ -42,19 +39,10 @@ The default behavior is to install the latest `senzingapi` packages.
 
 ## Expectations
 
-### Space
-
-This repository and demonstration require 6 GB free disk space.
-
-### Time
-
-Budget 10 minutes to get the demonstration up-and-running, depending on CPU and network speeds.
-
-### Background knowledge
-
-This repository assumes a working knowledge of:
-
-1. [Docker](https://github.com/Senzing/knowledge-base/blob/master/WHATIS/docker.md)
+- **Space:** This repository and demonstration require 6 GB free disk space.
+- **Time:** Budget 10 minutes to get the demonstration up-and-running, depending on CPU and network speeds.
+- **Background knowledge:** This repository assumes a working knowledge of:
+  - [Docker](https://github.com/Senzing/knowledge-base/blob/master/WHATIS/docker.md)
 
 ## Demonstrate using Docker
 
@@ -75,11 +63,11 @@ To use the Senzing code, you must agree to the End User License Agreement (EULA)
     export SENZING_ACCEPT_EULA_PARAMETER="--env SENZING_ACCEPT_EULA=${SENZING_ACCEPT_EULA}"
     ```
 
-### Volumes
+### Docker volumes
 
 Senzing follows the [Linux File Hierarchy Standard](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf).
 The Senzing RPM installs 2 packages: `senzingapi`, `senzingdata`.
-`senzingapi` is installed into `/opt/senzing/g2` and `senzingdata` is installed into `/opt/senzing/data` inside the docker container.
+`senzingapi` is installed into `/opt/senzing/g2` and `senzingdata` is installed into `/opt/senzing/data` inside the Docker container.
 Environment variables will be used in `--volume` options to externalize the installations.
 
 1. :pencil2: Specify the directory where to install Senzing.
@@ -104,9 +92,9 @@ Environment variables will be used in `--volume` options to externalize the inst
     export SENZING_G2_DIR=${SENZING_VOLUME}/g2
     ```
 
-### Run docker container
+### Run Docker container
 
-1. Run the docker container.
+1. Run Docker container.
    Example:
 
     ```console
@@ -124,7 +112,7 @@ Environment variables will be used in `--volume` options to externalize the inst
 
 The following instructions are used when modifying and building the Docker image.
 
-### Prerequisite software
+### Prerequisite software for development
 
 The following software programs need to be installed:
 
@@ -148,7 +136,7 @@ see [Environment Variables](https://github.com/Senzing/knowledge-base/blob/maste
 
 1. Follow steps in [clone-repository](https://github.com/Senzing/knowledge-base/blob/master/HOWTO/clone-repository.md) to install the Git repository.
 
-### Build docker image for development
+### Build Docker image
 
 1. **Option #1:** Using `docker` command and GitHub.
 
@@ -172,7 +160,7 @@ see [Environment Variables](https://github.com/Senzing/knowledge-base/blob/maste
     sudo make docker-build
     ```
 
-    Note: `sudo make docker-build-development-cache` can be used to create cached docker layers.
+    Note: `sudo make docker-build-development-cache` can be used to create cached Docker layers.
 
 ## Examples
 
@@ -189,7 +177,7 @@ Configuration values specified by environment variable or command line parameter
 - **[SENZING_G2_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_g2_dir)**
 - **[SENZING_RPM_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_rpm_dir)**
 
-### Run docker container on local file
+### Run Docker container on local file
 
 `senzing/yum` can be used to install local RPM files.
 
@@ -206,7 +194,7 @@ Configuration values specified by environment variable or command line parameter
     export SENZING_DATA_RPM_FILENAME=senzingdata-v1-nn.nn.nn.x86_64.rpm
     ```
 
-1. Run the docker container.
+1. Run the Docker container.
    Example:
 
     ```console
