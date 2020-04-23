@@ -207,7 +207,7 @@ By not setting `SENZING_ACCEPT_EULA_PARAMETER`, the containerized `yum` install 
       senzing/yum
     ```
 
-#### Run Docker container on local file
+#### Install local RPMs
 
 `senzing/yum` can be used to install local RPM files.
 
