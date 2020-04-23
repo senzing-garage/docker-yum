@@ -107,6 +107,11 @@ Environment variables will be used in `--volume` options to externalize the inst
 
 ### Run Docker container
 
+Although the `Docker run` command looks complex,
+it accounts for all of the optional variations described above.
+Unset environment variables have no effect on the
+`docker run` command and may be removed or remain.
+
 1. Run Docker container.
    Example:
 
@@ -184,6 +189,23 @@ see [Environment Variables](https://github.com/Senzing/knowledge-base/blob/maste
 
 The following examples require initialization described in
 [Demonstrate using Docker](#demonstrate-using-docker).
+
+#### Manually accept EULA
+
+By not setting `SENZING_ACCEPT_EULA_PARAMETER`, the containerized `yum` install will prompt for manual EULA acceptance.
+
+1. Run Docker container.
+   Example:
+
+    ```console
+    sudo docker run \
+      --interactive \
+      --rm \
+      --tty \
+      --volume ${SENZING_DATA_DIR}:/opt/senzing/data \
+      --volume ${SENZING_G2_DIR}:/opt/senzing/g2 \
+      senzing/yum
+    ```
 
 #### Run Docker container on local file
 
