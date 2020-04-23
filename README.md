@@ -1,41 +1,54 @@
 # docker-yum
 
+## Preamble
+
+At [Senzing](http://senzing.com),
+we strive to create GitHub documentation in a
+"[don't make me think](https://github.com/Senzing/knowledge-base/blob/master/WHATIS/dont-make-me-think.md)" style.
+For the most part, instructions are copy and paste.
+Whenever thinking is needed, it's marked with a "thinking" icon :thinking:.
+Whenever customization is needed, it's marked with a "pencil" icon :pencil2:.
+If the instructions are not clear, please let us know by opening a new
+[Documentation issue](https://github.com/Senzing/docker-yum/issues/new?template=documentation_request.md)
+describing where we can improve.   Now on with the show...
+
 ## Overview
 
 This repository creates a Docker wrapper over the `yum` command.
 It can be used to download and extract RPMs.
 The default behavior is to install the latest `senzingapi` packages.
 
-### Related artifacts
-
-1. [DockerHub](https://hub.docker.com/r/senzing/yum)
-1. [Helm Chart](https://github.com/Senzing/charts/tree/master/charts/senzing-yum)
-
 ### Contents
 
+1. [Related artifacts](#related-artifacts)
 1. [Expectations](#expectations)
 1. [Demonstrate using Docker](#demonstrate-using-docker)
     1. [EULA](#eula)
     1. [Docker volumes](#docker-volumes)
     1. [Run Docker container](#run-docker-container)
 1. [Develop](#develop)
-    1. [Prerequisite software for development](#prerequisite-software-for-development)
+    1. [Prerequisites for development](#prerequisites-for-development)
     1. [Clone repository](#clone-repository)
     1. [Build Docker image](#build-docker-image)
 1. [Examples](#examples)
+    1. [Examples of Docker](#examples-of-docker)
 1. [Advanced](#advanced)
     1. [Configuration](#configuration)
-    1. [Run Docker container on local file](#run-docker-container-on-local-file)
 1. [Errors](#errors)
 1. [References](#references)
 
-### Legend
+#### Legend
 
 1. :thinking: - A "thinker" icon means that a little extra thinking may be required.
-   Perhaps you'll need to make some choices.
+   Perhaps there are some choices to be made.
    Perhaps it's an optional step.
 1. :pencil2: - A "pencil" icon means that the instructions may need modification before performing.
 1. :warning: - A "warning" icon means that something tricky is happening, so pay attention.
+
+## Related artifacts
+
+1. [DockerHub](https://hub.docker.com/r/senzing/yum)
+1. [Helm Chart](https://github.com/Senzing/charts/tree/master/charts/senzing-yum)
 
 ## Expectations
 
@@ -106,19 +119,22 @@ Environment variables will be used in `--volume` options to externalize the inst
       senzing/yum
     ```
 
-2. When complete, Senzing is installed in the `SENZING_G2_DIR` and `SENZING_DATA_DIR` directories.
+1. When complete, Senzing is installed in the `SENZING_G2_DIR` and `SENZING_DATA_DIR` directories.
+1. For more examples of use, see [Examples of Docker](#examples-of-docker).
 
 ## Develop
 
 The following instructions are used when modifying and building the Docker image.
 
-### Prerequisite software for development
+### Prerequisites for development
 
-The following software programs need to be installed:
+:thinking: The following tasks need to be complete before proceeding.
+These are "one-time tasks" which may already have been completed.
 
-1. [git](https://github.com/Senzing/knowledge-base/blob/master/HOWTO/install-git.md)
-1. [make](https://github.com/Senzing/knowledge-base/blob/master/HOWTO/install-make.md)
-1. [docker](https://github.com/Senzing/knowledge-base/blob/master/HOWTO/install-docker.md)
+1. The following software programs need to be installed:
+    1. [git](https://github.com/Senzing/knowledge-base/blob/master/HOWTO/install-git.md)
+    1. [make](https://github.com/Senzing/knowledge-base/blob/master/HOWTO/install-make.md)
+    1. [docker](https://github.com/Senzing/knowledge-base/blob/master/HOWTO/install-docker.md)
 
 ### Clone repository
 
@@ -134,7 +150,7 @@ see [Environment Variables](https://github.com/Senzing/knowledge-base/blob/maste
     export GIT_REPOSITORY_DIR="${GIT_ACCOUNT_DIR}/${GIT_REPOSITORY}"
     ```
 
-1. Follow steps in [clone-repository](https://github.com/Senzing/knowledge-base/blob/master/HOWTO/clone-repository.md) to install the Git repository.
+1. Using the environment variables values just set, follow steps in [clone-repository](https://github.com/Senzing/knowledge-base/blob/master/HOWTO/clone-repository.md) to install the Git repository.
 
 ### Build Docker image
 
@@ -164,20 +180,12 @@ see [Environment Variables](https://github.com/Senzing/knowledge-base/blob/maste
 
 ## Examples
 
-## Advanced
+### Examples of Docker
 
-### Configuration
+The following examples require initialization described in
+[Demonstrate using Docker](#demonstrate-using-docker).
 
-Configuration values specified by environment variable or command line parameter.
-
-- **[SENZING_ACCEPT_EULA](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_accept_eula)**
-- **[SENZING_API_RPM_FILENAME](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_api_rpm_filename)**
-- **[SENZING_DATA_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_data_dir)**
-- **[SENZING_DATA_RPM_FILENAME](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_data_rpm_filename)**
-- **[SENZING_G2_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_g2_dir)**
-- **[SENZING_RPM_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_rpm_dir)**
-
-### Run Docker container on local file
+#### Run Docker container on local file
 
 `senzing/yum` can be used to install local RPM files.
 
@@ -208,6 +216,19 @@ Configuration values specified by environment variable or command line parameter
         /data/${SENZING_DATA_RPM_FILENAME} \
         /data/${SENZING_API_RPM_FILENAME}
     ```
+
+## Advanced
+
+### Configuration
+
+Configuration values specified by environment variable or command line parameter.
+
+- **[SENZING_ACCEPT_EULA](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_accept_eula)**
+- **[SENZING_API_RPM_FILENAME](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_api_rpm_filename)**
+- **[SENZING_DATA_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_data_dir)**
+- **[SENZING_DATA_RPM_FILENAME](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_data_rpm_filename)**
+- **[SENZING_G2_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_g2_dir)**
+- **[SENZING_RPM_DIR](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_rpm_dir)**
 
 ## Errors
 
