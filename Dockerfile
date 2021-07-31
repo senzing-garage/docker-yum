@@ -12,9 +12,11 @@ HEALTHCHECK CMD ["/app/healthcheck.sh"]
 
 # Install packages via yum.
 
-RUN yum -y install \
+RUN yum -y update && yum -y install \
     https://packages.microsoft.com/config/centos/7/packages-microsoft-prod.rpm \
     ${SENZING_YUM_REPOSITORY_URL}
+
+RUN yum -y update python*
 
 # Copy files from repository.
 
