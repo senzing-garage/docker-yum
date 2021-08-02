@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed in 1.1.6
 
 - Updated to use CentOS 8 base image
+
 ## [1.1.5] - 2021-07-31
 
 ### Changed in 1.1.5
