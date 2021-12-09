@@ -1,7 +1,7 @@
-ARG BASE_IMAGE=centos:8
+ARG BASE_IMAGE=centos:8@sha256:a27fd8080b517143cbbbab9dfb7c8571c40d67d534bbdee55bd6c473f432b177
 FROM ${BASE_IMAGE}
 
-ENV REFRESHED_AT=2021-07-31
+ENV REFRESHED_AT=2021-12-07
 ARG SENZING_YUM_REPOSITORY_URL=https://senzing-production-yum.s3.amazonaws.com/senzingrepo-1.0.0-1.x86_64.rpm
 
 LABEL Name="senzing/yum" \
