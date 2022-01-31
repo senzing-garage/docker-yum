@@ -1,12 +1,12 @@
-ARG BASE_IMAGE=centos:8@sha256:a27fd8080b517143cbbbab9dfb7c8571c40d67d534bbdee55bd6c473f432b177
+ARG BASE_IMAGE=amazonlinux:2@sha256:ffc013f79b36a2c0352b444f5322ff43de25152a8ac1ad0fa473e90f1cbedcbe
 FROM ${BASE_IMAGE}
 
-ENV REFRESHED_AT=2022-01-06
+ENV REFRESHED_AT=2022-01-31
 ARG SENZING_YUM_REPOSITORY_URL=https://senzing-production-yum.s3.amazonaws.com/senzingrepo-1.0.0-1.x86_64.rpm
 
 LABEL Name="senzing/yum" \
       Maintainer="support@senzing.com" \
-      Version="1.1.6"
+      Version="1.1.8"
 
 HEALTHCHECK CMD ["/app/healthcheck.sh"]
 

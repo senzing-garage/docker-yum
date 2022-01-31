@@ -7,7 +7,6 @@ GIT_VERSION := $(shell git describe --always --tags --long --dirty | sed -e 's/\
 
 DOCKER_IMAGE_TAG ?= $(GIT_REPOSITORY_NAME):$(GIT_VERSION)
 DOCKER_IMAGE_NAME := senzing/yum
-BASE_IMAGE ?= centos:8
 
 # -----------------------------------------------------------------------------
 # The first "make" target runs as default.
@@ -23,7 +22,6 @@ default: help
 .PHONY: docker-build
 docker-build: docker-rmi-for-build
 	docker build \
-		--build-arg BASE_IMAGE=$(BASE_IMAGE) \
 	    --tag $(DOCKER_IMAGE_NAME) \
 		--tag $(DOCKER_IMAGE_NAME):$(GIT_VERSION) \
 		.
