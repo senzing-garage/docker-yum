@@ -164,7 +164,7 @@ see [Environment Variables](https://github.com/Senzing/knowledge-base/blob/maste
     ```console
     sudo docker build \
       --tag senzing/yum \
-      https://github.com/senzing/docker-yum.git
+      https://github.com/senzing/docker-yum.git#main
     ```
 
 1. **Option #2:** Using `docker` command and local repository.
