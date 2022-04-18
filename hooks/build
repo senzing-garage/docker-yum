@@ -1,0 +1,40 @@
+#!/bin/bash
+
+SENZING_GIT_REPOSITORY=docker-yum
+
+# List possible build ARGs.
+
+BUILD_ARGS=(
+    BASE_IMAGE
+    SENZING_YUM_REPOSITORY_URL
+)
+
+# Build "BUILD_ARGS_STRING".
+
+BUILD_ARGS_STRING=""
+for BUILD_ARG in ${BUILD_ARGS[@]};
+do
+    if [ ! -z  ${!BUILD_ARG} ]; then
+        BUILD_ARGS_STRING="${BUILD_ARGS_STRING}--build-arg ${BUILD_ARG}=${!BUILD_ARG} "
+    fi
+done
+
+# Print runtime environment.
+
+echo "==========================================================="
+echo "== ${SENZING_GIT_REPOSITORY}/hooks/build"
+echo "==   Building with file: ${DOCKERFILE_PATH}"
+echo "==   Environment variables:"
+env | awk -F= '{ print "==     ", $0}'
+echo "=="
+echo "==   ${BUILD_ARGS_STRING} "
+echo "==   Hook version: 1.0.0 - 2022-04-18"
+echo "==========================================================="
+
+# Run docker build.
+
+docker build \
+    --file ${DOCKERFILE_PATH} \
+    --tag ${IMAGE_NAME} \
+    ${BUILD_ARGS_STRING} \
+    .
