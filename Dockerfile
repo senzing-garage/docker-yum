@@ -1,12 +1,12 @@
 ARG BASE_IMAGE=amazonlinux:2@sha256:ffc013f79b36a2c0352b444f5322ff43de25152a8ac1ad0fa473e90f1cbedcbe
 FROM ${BASE_IMAGE}
 
-ENV REFRESHED_AT=2022-04-01
+ENV REFRESHED_AT=2022-04-21
 ARG SENZING_YUM_REPOSITORY_URL=https://senzing-production-yum.s3.amazonaws.com/senzingrepo-1.0.0-1.x86_64.rpm
 
 LABEL Name="senzing/yum" \
       Maintainer="support@senzing.com" \
-      Version="1.1.8"
+      Version="1.1.9"
 
 HEALTHCHECK CMD ["/app/healthcheck.sh"]
 
@@ -24,5 +24,5 @@ COPY ./rootfs /
 
 # Runtime execution.
 
-ENTRYPOINT ["yum"]
+ENTRYPOINT ["/app/docker-entrypoint.sh"]
 CMD ["-y", "install", "senzingapi"]
