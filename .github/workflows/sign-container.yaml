@@ -60,7 +60,7 @@ jobs:
           images: ${{ env.IMAGE_NAME }}
           tags: |
             # set latest tag for main branch
-            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
+            type=raw,value=latest
             type=semver,pattern={{version}}
           flavor: |
             latest=false
