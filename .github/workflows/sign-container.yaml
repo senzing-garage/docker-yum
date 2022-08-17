@@ -4,8 +4,6 @@ on:
     types: [published]
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -60,7 +58,7 @@ jobs:
           images: ${{ env.IMAGE_NAME }}
           tags: |
             # set latest tag for main branch
-            type=raw,value=latest
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
             type=semver,pattern={{version}}
           flavor: |
             latest=false
