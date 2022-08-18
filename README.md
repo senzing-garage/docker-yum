@@ -34,6 +34,7 @@ The default behavior is to install the latest `senzingapi` packages.
     1. [Examples of Docker](#examples-of-docker)
 1. [Advanced](#advanced)
     1. [Configuration](#configuration)
+    1. [Container Signature Verification](#container-signature-verification)
 1. [Errors](#errors)
 1. [References](#references)
 
