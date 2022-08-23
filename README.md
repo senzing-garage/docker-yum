@@ -255,7 +255,7 @@ Configuration values specified by environment variable or command line parameter
 
 ### Container Signature Verification
 
-Container image integrity becomes increasingly important as images are being deployed into zero-trust environments. This is achieved by container signatures. They provide developers with cryptographic assurance that the images they are pulling in are from a trusted source.
+Container image integrity has become increasingly important as images are being deployed into zero-trust environments. The image integrity is achieved by container signatures. They provide developers with cryptographic assurance that the images they are pulling in are from a trusted source.
 
 To verify Senzing's dockerhub images, first copy the hash of the docker image pulled.
 ![dockerhub hash](assets/dockerhub_hash.png)
