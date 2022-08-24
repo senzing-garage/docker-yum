@@ -262,8 +262,11 @@ To verify Senzing's dockerhub images, first copy the hash of the docker image pu
 
 Then verify the hash using cosign.
 ```
-COSIGN_EXPERIMENTAL=1 cosign verify senzing/test@sha256:<insert sha256 hash>
+COSIGN_EXPERIMENTAL=1 cosign verify senzing/web-app-demo@sha256:<insert sha256 hash>
 ```
+
+This is what a successful verification looks like.
+![cosign verify](assets/cosign_verify.png)
 
 To learn more about cosign and how to install, go [here](https://github.com/sigstore/cosign).
 
