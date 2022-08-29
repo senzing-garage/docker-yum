@@ -34,6 +34,7 @@ The default behavior is to install the latest `senzingapi` packages.
     1. [Examples of Docker](#examples-of-docker)
 1. [Advanced](#advanced)
     1. [Configuration](#configuration)
+    1. [Container Signature Verification](#container-signature-verification)
 1. [Errors](#errors)
 1. [References](#references)
 
@@ -251,6 +252,23 @@ Configuration values specified by environment variable or command line parameter
 - **[SENZING_DATA_RPM_FILENAME](https://github.com/Senzing/knowledge-base/blob/main/lists/environment-variables.md#senzing_data_rpm_filename)**
 - **[SENZING_G2_DIR](https://github.com/Senzing/knowledge-base/blob/main/lists/environment-variables.md#senzing_g2_dir)**
 - **[SENZING_RPM_DIR](https://github.com/Senzing/knowledge-base/blob/main/lists/environment-variables.md#senzing_rpm_dir)**
+
+### Container Signature Verification
+
+Container image integrity has become increasingly important as images are being deployed into zero-trust environments. The image integrity is achieved by container signatures. They provide developers with cryptographic assurance that the images they are pulling in are from a trusted source.
+
+To verify Senzing's dockerhub images, first copy the hash of the docker image pulled.
+![dockerhub hash](assets/dockerhub_hash.png)
+
+Then verify the hash using cosign.
+```
+COSIGN_EXPERIMENTAL=1 cosign verify senzing/web-app-demo@sha256:<insert sha256 hash>
+```
+
+This is what a successful verification looks like.
+![cosign verify](assets/cosign_verify.png)
+
+To learn more about cosign and how to install, go [here](https://github.com/sigstore/cosign).
 
 ## Errors
 
