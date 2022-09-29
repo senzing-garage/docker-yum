@@ -6,7 +6,7 @@ ARG SENZING_YUM_REPOSITORY_URL=https://senzing-production-yum.s3.amazonaws.com/s
 
 LABEL Name="senzing/yum" \
       Maintainer="support@senzing.com" \
-      Version="1.1.9"
+      Version="1.1.10"
 
 HEALTHCHECK CMD ["/app/healthcheck.sh"]
 
