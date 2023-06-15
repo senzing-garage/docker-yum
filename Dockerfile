@@ -1,7 +1,7 @@
-ARG BASE_IMAGE=amazonlinux:2@sha256:3385565b4b75c4f15fd59a5dd7e4510ac5ad4b1825df9deed6be6af1092c8829
+ARG BASE_IMAGE=amazonlinux:2@sha256:bd5df9c2ec1cd679de9ccb5ce4a918e093348e2b38683d42221c1dc4cd45f2ef
 FROM ${BASE_IMAGE}
 
-ENV REFRESHED_AT=2023-05-09
+ENV REFRESHED_AT=2023-06-15
 ARG SENZING_YUM_REPOSITORY_URL=https://senzing-production-yum.s3.amazonaws.com/senzingrepo-1.0.0-1.x86_64.rpm
 
 LABEL Name="senzing/yum" \
