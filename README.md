@@ -1,5 +1,17 @@
 # docker-yum
 
+If you are beginning your journey with
+[Senzing](https://senzing.com/),
+please start with
+[Senzing Quick Start guides](https://docs.senzing.com/quickstart/).
+
+You are in the
+[Senzing Garage](https://github.com/senzing-garage)
+where projects are "tinkered" on.
+Although this GitHub repository may help you understand an approach to using Senzing,
+it's not considered to be "production ready" and is not considered to be part of the Senzing product.
+Heck, it may not even be appropriate for your application of Senzing!
+
 ## Synopsis
 
 A docker wrapper around the `yum` command.
@@ -22,7 +34,7 @@ The default behavior is to install the latest `senzingapi` packages.
     1. [Configuration](#configuration)
 1. [References](#references)
 
-#### Legend
+### Legend
 
 1. :thinking: - A "thinker" icon means that a little extra thinking may be required.
    Perhaps there are some choices to be made.
@@ -30,12 +42,12 @@ The default behavior is to install the latest `senzingapi` packages.
 1. :pencil2: - A "pencil" icon means that the instructions may need modification before performing.
 1. :warning: - A "warning" icon means that something tricky is happening, so pay attention.
 
-## Expectations
+### Expectations
 
 - **Space:** This repository and demonstration require 6 GB free disk space.
 - **Time:** Budget 10 minutes to get the demonstration up-and-running, depending on CPU and network speeds.
 - **Background knowledge:** This repository assumes a working knowledge of:
-  - [Docker](https://github.com/Senzing/knowledge-base/blob/main/WHATIS/docker.md)
+  - [Docker](https://github.com/senzing-garage/knowledge-base/blob/main/WHATIS/docker.md)
 
 ## Demonstrate using Docker
 
@@ -47,7 +59,7 @@ To use the Senzing code, you must agree to the End User License Agreement (EULA)
    This ensures that you make a conscious effort to accept the EULA.
    Example:
 
-    <pre>export SENZING_ACCEPT_EULA="&lt;the value from <a href="https://github.com/Senzing/knowledge-base/blob/main/lists/environment-variables.md#senzing_accept_eula">this link</a>&gt;"</pre>
+    <pre>export SENZING_ACCEPT_EULA="&lt;the value from <a href="https://github.com/senzing-garage/knowledge-base/blob/main/lists/environment-variables.md#senzing_accept_eula">this link</a>&gt;"</pre>
 
 1. Construct parameter for `docker run`.
    Example:
@@ -71,10 +83,10 @@ Environment variables will be used in `--volume` options to externalize the inst
     ```
 
     1. :warning:
-       **macOS** - [File sharing](https://github.com/Senzing/knowledge-base/blob/main/HOWTO/share-directories-with-docker.md#macos)
+       **macOS** - [File sharing](https://github.com/senzing-garage/knowledge-base/blob/main/HOWTO/share-directories-with-docker.md#macos)
        must be enabled for `SENZING_VOLUME`.
     1. :warning:
-       **Windows** - [File sharing](https://github.com/Senzing/knowledge-base/blob/main/HOWTO/share-directories-with-docker.md#windows)
+       **Windows** - [File sharing](https://github.com/senzing-garage/knowledge-base/blob/main/HOWTO/share-directories-with-docker.md#windows)
        must be enabled for `SENZING_VOLUME`.
 
 1. Identify directories for `data` and `g2`.
@@ -136,7 +148,7 @@ By not setting `SENZING_ACCEPT_EULA_PARAMETER`, the containerized `yum` install 
 `senzing/yum` can be used to install local RPM files.
 
 1. To download Senzing RPM files, see
-   [github.com/Senzing/docker-yumdownloader](https://github.com/Senzing/docker-yumdownloader).
+   [github.com/Senzing/docker-yumdownloader](https://github.com/senzing-garage/docker-yumdownloader).
 
 1. :pencil2: Set additional environment variables.
    Identify directory containing RPM files and the exact names of RPM files.
@@ -167,10 +179,10 @@ By not setting `SENZING_ACCEPT_EULA_PARAMETER`, the containerized `yum` install 
 
 Configuration values specified by environment variable or command line parameter.
 
-- **[SENZING_ACCEPT_EULA](https://github.com/Senzing/knowledge-base/blob/main/lists/environment-variables.md#senzing_accept_eula)**
-- **[SENZING_API_RPM_FILENAME](https://github.com/Senzing/knowledge-base/blob/main/lists/environment-variables.md#senzing_api_rpm_filename)**
-- **[SENZING_DATA_RPM_FILENAME](https://github.com/Senzing/knowledge-base/blob/main/lists/environment-variables.md#senzing_data_rpm_filename)**
-- **[SENZING_RPM_DIR](https://github.com/Senzing/knowledge-base/blob/main/lists/environment-variables.md#senzing_rpm_dir)**
+- **[SENZING_ACCEPT_EULA](https://github.com/senzing-garage/knowledge-base/blob/main/lists/environment-variables.md#senzing_accept_eula)**
+- **[SENZING_API_RPM_FILENAME](https://github.com/senzing-garage/knowledge-base/blob/main/lists/environment-variables.md#senzing_api_rpm_filename)**
+- **[SENZING_DATA_RPM_FILENAME](https://github.com/senzing-garage/knowledge-base/blob/main/lists/environment-variables.md#senzing_data_rpm_filename)**
+- **[SENZING_RPM_DIR](https://github.com/senzing-garage/knowledge-base/blob/main/lists/environment-variables.md#senzing_rpm_dir)**
 
 ## References
 
@@ -179,5 +191,5 @@ Configuration values specified by environment variable or command line parameter
 - [Examples](docs/examples.md)
 - Related artifacts:
   - [DockerHub](https://hub.docker.com/r/senzing/yum)
-  - [Helm Chart](https://github.com/Senzing/charts/tree/main/charts/senzing-yum)
-- [Verify container](https://github.com/Senzing/knowledge-base/blob/main/HOWTO/verify-container.md)
+  - [Helm Chart](https://github.com/senzing-garage/charts/tree/main/charts/senzing-yum)
+- [Verify container](https://github.com/senzing-garage/knowledge-base/blob/main/HOWTO/verify-container.md)
