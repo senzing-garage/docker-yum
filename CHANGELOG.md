@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 [markdownlint](https://dlaa.me/markdownlint/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.16] - 2024-06-24
+
+### Changed in 1.1.16
+
+- In `Dockerfile`, updated FROM instruction to `amazonlinux:2@sha256:becb90c0dbcd559796b39091158e259f0621f7b2c7a753a888b8a50cbec749c5`
+
 ## [1.1.15] - 2024-05-22
 
 ### Changed in 1.1.15
