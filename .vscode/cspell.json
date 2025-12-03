@@ -1,27 +1,25 @@
 {
-  // Version of the setting file.  Always 0.2
   "version": "0.2",
-  // language - current active spelling language
   "language": "en",
-  // words - list of words to be always considered correct
   "words": [
-      "Senzing",
-      "CODEOWNER",
-      "ICLA",
-      "CCLA",
-      "pydevproject",
-      "buildx",
-      "dockerhub",
-      "amazonlinux",
-      "senzingdata",
-      "senzingapi",
-      "stackoverflow",
-      "rootfs",
-      "toplevel",
-      "alnum",
-      "yumdownloader",
-      "localinstall"
-    ],
+    "CCLA",
+    "CODEOWNER",
+    "ICLA",
+    "Senzing",
+    "alnum",
+    "amazonlinux",
+    "buildx",
+    "dockerhub",
+    "esbenp",
+    "localinstall",
+    "pydevproject",
+    "rootfs",
+    "senzingapi",
+    "senzingdata",
+    "stackoverflow",
+    "toplevel",
+    "yumdownloader"
+  ],
   "ignorePaths": [
     ".git/**"
   ]
