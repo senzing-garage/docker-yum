@@ -20,7 +20,5 @@
     "toplevel",
     "yumdownloader"
   ],
-  "ignorePaths": [
-    ".git/**"
-  ]
+  "ignorePaths": [".git/**"]
 }
