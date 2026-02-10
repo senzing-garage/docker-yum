@@ -12,6 +12,7 @@
     "dockerhub",
     "esbenp",
     "ICLA",
+    "kernelsam",
     "localinstall",
     "pydevproject",
     "rootfs",
@@ -22,5 +23,7 @@
     "toplevel",
     "yumdownloader"
   ],
-  "ignorePaths": [".git/**"]
+  "ignorePaths": [
+    ".git/**"
+  ]
 }
